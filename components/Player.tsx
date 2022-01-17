@@ -71,7 +71,7 @@ function Player() {
             <div className="flex items-center space-x-4">
                 <img
                     className="hidden md:inline h-10 w-10"
-                    src={songInfo?.album?.images?.[0]?.url}
+                    src={songInfo?songInfo?.album?.images?.[0]?.url:"https://upload.wikimedia.org/wikipedia/commons/7/74/Spotify_App_Logo.svg"}
                     alt=""
                 />
                 <div>

@@ -6,6 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import useSpotify from "../hooks/useSpotify";
 import Songs from "./Songs";
+import HomeLanding from "./HomeLanding";
 
 function Center() {
     const { data: session } = useSession();
@@ -34,7 +35,6 @@ function Center() {
             })
             .catch((err) => console.log("something went wrong!", err));
     }, [spotifyApi, playlistId]);
-
     return (
         <div className="flex-grow text-white h-screen overflow-y-scroll scrollbar-hide">
             <header className="absolute top-5 right-8">
@@ -53,20 +53,20 @@ function Center() {
                 className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8 `}
             >
                 <img
-                    src={playlist?.images?.[0]?.url}
+                    src={playlist?(playlist?.images?.[0]?.url):"https://upload.wikimedia.org/wikipedia/commons/7/74/Spotify_App_Logo.svg"}
                     alt=""
-                    className="h-44 w-44 shadow-2xl"
+                    className="h-[5rem] w-[5rem] md:h-44 md:w-44 shadow-2xl"
                 />
                 <div>
-                    <p>PLAYLIST</p>
+                    <p>{playlist&&(playlist?.collaborative?"COLLABORATIVE PLAYLIST":"PLAYLIST")}</p>
                     <h1 className="text-2xl md:text-3xl xl:text-5xl font-bold">
-                        {playlist?.name}
+                        {playlist?playlist?.name:"Welcome to spotify"}
                     </h1>
                 </div>
             </section>
 
             <div>
-                <Songs/>
+                {playlist?<Songs/>:<HomeLanding/>}
             </div>
         </div>
     );

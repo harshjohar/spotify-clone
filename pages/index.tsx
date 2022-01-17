@@ -9,6 +9,8 @@ export default function Home() {
         <div className="bg-black h-screen overflow-hidden">
             <Head>
                 <title>Spotify Clone | Harshjohar</title>
+                <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/7/74/Spotify_App_Logo.svg" />
+                <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/7/74/Spotify_App_Logo.svg"/>
             </Head>
             <main className="flex">
                 <Sidebar />
